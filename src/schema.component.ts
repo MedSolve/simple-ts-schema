@@ -30,10 +30,11 @@ export function SchemaComponent(target: any): any {
     f.prototype = original.prototype;
 
     // add functions from the validator
-    f.prototype.popAndValidate = SchemaHelper.prototype.popAndValidate;
+    f.prototype.popAndValidate   = SchemaHelper.prototype.popAndValidate;
     f.prototype.getValueFromType = SchemaHelper.prototype.getValueFromType;
-    f.prototype.setValue = SchemaHelper.prototype.setValue;
-
+    f.prototype.setValue         = SchemaHelper.prototype.setValue;
+    f.prototype.getValueFromAllTypes = SchemaHelper.prototype.getValueFromAllTypes;
+    
     // return new constructor (will override original)
     return f;
 }

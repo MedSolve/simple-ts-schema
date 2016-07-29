@@ -41,7 +41,7 @@ export class SchemaHelper {
                         delete data[key];
 
                         // check if field is required if skip is not set
-                    } else if (target[key].required === true) {
+                    } else if (target[key].min !== 0) {
 
                         // notify about error
                         throw new Error(key + ': is required and not present in provided data');
@@ -100,13 +100,15 @@ export class SchemaHelper {
         try {
 
             // is type an array?
-            if (Array.isArray(target[key].type)) {
+            if (target[key].max !== undefined && target[key].max !== 1) {
 
                 // empty array
                 value = [];
 
                 // is provided data all so an array
                 if (!Array.isArray(data[key])) {
+
+                    // tell about error
                     throw new Error('Your data ' + key + ' should be an array');
 
                     // provided data IS an array
@@ -116,7 +118,7 @@ export class SchemaHelper {
                     data[key].forEach((elm: string) => {
 
                         // save correct value
-                        value.push(this.getValueFromType(target[key].type[0], elm, Enforce.required));
+                        value.push(this.getValueFromAllTypes(target[key].type, elm, Enforce.required));
                     });
                 }
 
@@ -124,7 +126,7 @@ export class SchemaHelper {
             } else {
 
                 // test if value type is okay
-                value = this.getValueFromType(target[key].type, data[key], Enforce.required);
+                value = this.getValueFromAllTypes(target[key].type, data[key], Enforce.required);
             }
 
             // check binding against valueset if a binding is set   
@@ -161,5 +163,43 @@ export class SchemaHelper {
         }
 
         return temp;
+    }
+    /**
+     * Get the value from all data types
+     * @param {Array<any>}  type        type value shall be extracted from
+     * @param {any}         value       value to be set to a type
+     * @param {Enforce}     validate    level of validation to be done on the type
+     */
+    public getValueFromAllTypes(types: Array<any>, value: any, validate: Enforce): any {
+
+        // reference to value
+        let temp: any;
+        let error: string = '';
+        let ok: boolean = false;
+
+        // go through all the data types
+        types.every((type: any) => {
+
+            try {
+
+                // when one type is ok then skip test of new types
+                temp = this.getValueFromType(type, value, validate);
+                ok = true;
+                return false;
+
+            } catch (err) {
+
+                // append found error
+                error += err.message;
+                return true;
+            }
+        });
+
+        // check if ok is true
+        if (ok === true) {
+            return temp;
+        } else {
+            throw new Error('Type is not okay for value: ' + value);
+        }
     }
 }
