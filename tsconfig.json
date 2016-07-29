@@ -1,0 +1,19 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "outDir": "build",
+        "target": "es5",
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "node_modules",
+        "typings/modules",
+        "typings/globals",
+        "build"
+    ]
+}

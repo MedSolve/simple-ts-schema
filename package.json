@@ -1,0 +1,29 @@
+{
+  "name": "simple-ts-schema",
+  "version": "1.0.0",
+  "description": "Simple schema for objects that validate type and value of an object",
+  "main": "build/src/index.js",
+  "typings": "build/src/index.d.ts",
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "node build/test",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MedSolve/di-type.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "typescript",
+    "Schema",
+    "Validation"
+  ],
+  "author": "MedSolve",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MedSolve/di-type/issues"
+  },
+  "homepage": "https://github.com/MedSolve/di-type#readme"
+}
