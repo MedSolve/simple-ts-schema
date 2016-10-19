@@ -1,11 +1,10 @@
 {
   "name": "simple-ts-schema",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple schema for objects that validate type and value of an object",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "test": "node build/test",
     "prepublish": "tsc"
