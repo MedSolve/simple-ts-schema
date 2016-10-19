@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MedSolve/di-type.git"
+    "url": "git+https://github.com/MedSolve/simple-ts-schema.git"
   },
   "keywords": [
     "NodeJS",
@@ -23,7 +23,7 @@
   "author": "MedSolve",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MedSolve/di-type/issues"
+    "url": "https://github.com/MedSolve/simple-ts-schema/issues"
   },
-  "homepage": "https://github.com/MedSolve/di-type#readme"
+  "homepage": "https://github.com/MedSolve/simple-ts-schema#readme"
 }
